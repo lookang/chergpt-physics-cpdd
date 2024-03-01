@@ -3,7 +3,7 @@ from openai import OpenAI
 import streamlit as st
 import psycopg2
 
-st.title("CherGPT for Physics/CPDD")
+st.title("Mr. Yap Boon Chien Physics CherGPT")
 
 client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 

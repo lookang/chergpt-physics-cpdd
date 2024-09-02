@@ -112,7 +112,14 @@ if st.session_state.get("is_admin"):
         if st.button("Save Instructions"):
             update_instructions(custom_instructions)
             st.success("Instructions updated successfully")
-            st.experimental_rerun()
+            # st.experimental_rerun()
+            # Instead of st.experimental_rerun(), you can set a session state flag
+            st.session_state["instructions_updated"] = True
+        
+        # Reload the instructions if they were just updated
+        if st.session_state.get("instructions_updated"):
+            existing_instructions = get_latest_instructions()
+            st.session_state["instructions_updated"] = False  # Reset the flag
 
 if "openai_model" not in st.session_state:
     st.session_state["openai_model"] = "gpt-3.5-turbo"
